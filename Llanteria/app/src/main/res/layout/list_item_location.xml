@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:id="@+id/list_item_location_icon_image_view"
+        android:src="@drawable/location_item_icon"
+        android:padding="4dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:id="@+id/list_item_location_distance_text_view"
+        tools:text="Location Distance"
+        android:padding="4dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/list_item_location_distance_text_view"
+        android:layout_toRightOf="@+id/list_item_location_icon_image_view"
+        android:textStyle="bold"
+        android:padding="4dp"
+        tools:text="Location Name"
+        android:id="@+id/list_item_location_name_text_view" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/list_item_location_name_text_view"
+        android:layout_toLeftOf="@+id/list_item_location_distance_text_view"
+        android:layout_toRightOf="@+id/list_item_location_icon_image_view"
+        android:padding="4dp"
+        tools:text="Location address"
+        android:id="@+id/list_item_location_address_text_view" />
+
+</RelativeLayout>
