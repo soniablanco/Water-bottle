@@ -14,7 +14,7 @@ public abstract class SingleFragmentActivity extends AppCompatActivity {
     protected abstract Fragment createFragment();
 
     @LayoutRes
-    protected int getLayoutrResId() {
+    private int getLayoutrResId() {
         return R.layout.activity_fragment;
     }
 

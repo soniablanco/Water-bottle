@@ -2,18 +2,18 @@
 <items version="2" >
 
     <item
-        jar="D:\AppData\Local\Android\Sdk\extras\android\m2repository\com\android\support\support-annotations\23.0.0\support-annotations-23.0.0.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="990e7f98a7bad86a40b1f0bcfeb039023afd0839">
-        <dex dex="D:\SONI\Llanteria\App\Llanteria\app\build\intermediates\pre-dexed\debug\support-annotations-23.0.0-6a679068a7b8264ea4e23f3f387ea0349bf8bd91.jar" />
-    </item>
-    <item
         jar="D:\SONI\Llanteria\App\Llanteria\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.0\jars\classes.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="8413c27b45b7fe61dca4a98159f65e2cee215f5a">
         <dex dex="D:\SONI\Llanteria\App\Llanteria\app\build\intermediates\pre-dexed\debug\classes-fa146d214185eb01ecace3fc74a3a696ca1ff941.jar" />
+    </item>
+    <item
+        jar="D:\AppData\Local\Android\Sdk\extras\android\m2repository\com\android\support\support-annotations\23.0.0\support-annotations-23.0.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="990e7f98a7bad86a40b1f0bcfeb039023afd0839">
+        <dex dex="D:\SONI\Llanteria\App\Llanteria\app\build\intermediates\pre-dexed\debug\support-annotations-23.0.0-6a679068a7b8264ea4e23f3f387ea0349bf8bd91.jar" />
     </item>
     <item
         jar="D:\SONI\Llanteria\App\Llanteria\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.0.0\jars\classes.jar"

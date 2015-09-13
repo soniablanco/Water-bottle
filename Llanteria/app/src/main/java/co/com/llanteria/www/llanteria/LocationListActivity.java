@@ -13,11 +13,7 @@ public class LocationListActivity extends SingleFragmentActivity {
         return LocationListFragment.newInstace();
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fragment);
-    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
