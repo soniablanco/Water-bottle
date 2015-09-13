@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -24,6 +25,9 @@ import java.util.List;
 public class LocationListFragment extends Fragment {
 
     private RecyclerView mLocationRecyclerView;
+
+    private static final int VERTICAL_SPACE_DECORATION = 48;
+    private static final int[] LINE_DIVIDER = new int[]{android.R.attr.listDivider};
 
     private LocationAdapter mAdapter;
 
@@ -36,13 +40,13 @@ public class LocationListFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_location_list, container, false);
         mLocationRecyclerView = (RecyclerView)v.findViewById(R.id.payment_recycler_view);
         mLocationRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mLocationRecyclerView.addItemDecoration(new VerticalSpaceItemDecoration(48));
-        mLocationRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity()));
+        mLocationRecyclerView.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_SPACE_DECORATION));
+        mLocationRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity(),LINE_DIVIDER));
         UpdateUI();
         return v;
     }
 
-    private class LocationHolder extends RecyclerView.ViewHolder{
+    private class LocationHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private Location mLocation;
 
         public TextView mLocationNameTextView;
@@ -51,6 +55,8 @@ public class LocationListFragment extends Fragment {
 
         public LocationHolder(View itemView){
             super(itemView);
+            itemView.setOnClickListener(this);
+
             mLocationNameTextView = (TextView)itemView.findViewById(R.id.list_item_location_name_text_view);
             mLocationDistanceTextView = (TextView)itemView.findViewById(R.id.list_item_location_distance_text_view);
             mLocationAddressTextView = (TextView)itemView.findViewById(R.id.list_item_location_address_text_view);
@@ -62,6 +68,12 @@ public class LocationListFragment extends Fragment {
             mLocationNameTextView.setText(mLocation.getName());
             mLocationDistanceTextView.setText(String.valueOf(mLocation.getDistance()));
             mLocationAddressTextView.setText(mLocation.getAddress());
+        }
+
+        @Override
+        public void onClick(View v) {
+            Toast.makeText(getActivity(),mLocation.getName() + " clicked", Toast.LENGTH_SHORT)
+            .show();
         }
     }
 
@@ -97,7 +109,6 @@ public class LocationListFragment extends Fragment {
         }
     }
 
-
     public class VerticalSpaceItemDecoration extends RecyclerView.ItemDecoration {
 
         private final int mVerticalSpaceHeight;
@@ -109,9 +120,7 @@ public class LocationListFragment extends Fragment {
         @Override
         public void getItemOffsets(Rect outRect, View view, RecyclerView parent,
                                    RecyclerView.State state) {
-            if (parent.getChildAdapterPosition(view) != parent.getAdapter().getItemCount() - 1) {
-                outRect.bottom = mVerticalSpaceHeight;
-            }
+            outRect.bottom = mVerticalSpaceHeight;
         }
     }
 
@@ -122,8 +131,8 @@ public class LocationListFragment extends Fragment {
         /**
          * Default divider will be used
          */
-        public DividerItemDecoration(Context context) {
-            final TypedArray styledAttributes = context.obtainStyledAttributes(new int[]{android.R.attr.listDivider});
+        public DividerItemDecoration(Context context,int[] divider) {
+            final TypedArray styledAttributes = context.obtainStyledAttributes(divider);
             mDivider = styledAttributes.getDrawable(0);
             styledAttributes.recycle();
         }

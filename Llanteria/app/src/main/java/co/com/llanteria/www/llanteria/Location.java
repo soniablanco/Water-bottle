@@ -9,9 +9,7 @@ public class Location {
     private UUID mId;
     private String mName;
     private String mAddress;
-    private double mLatitude;
-    private double mLongitude;
-    private double mDistance;
+    private String mDistance;
 
     public Location(){
         mId = UUID.randomUUID();
@@ -37,27 +35,11 @@ public class Location {
         this.mAddress = mAddress;
     }
 
-    public double getLatitude() {
-        return mLatitude;
+    public String getDistance() {
+        return mDistance + " Km";
     }
 
-    public void setLatitude(double mLatitude) {
-        this.mLatitude = mLatitude;
-    }
-
-    public double getLongitude() {
-        return mLongitude;
-    }
-
-    public void setLongitude(double mLongitude) {
-        this.mLongitude = mLongitude;
-    }
-
-    public double getDistance() {
-        return mDistance;
-    }
-
-    public void setDistance(double mDistance) {
+    public void setDistance(String mDistance) {
         this.mDistance = mDistance;
     }
 }
