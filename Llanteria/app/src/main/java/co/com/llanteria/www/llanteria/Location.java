@@ -9,12 +9,13 @@ public class Location {
     private UUID mId;
     private String mName;
     private String mAddress;
-    private String mDistance;
+    private double mDistance;
     private double mLatitude;
     private double mLongitude;
 
     public Location(){
         mId = UUID.randomUUID();
+        mDistance = 0.0;
     }
 
     public UUID getId() {
@@ -37,12 +38,12 @@ public class Location {
         this.mAddress = mAddress;
     }
 
-    public String getDistance() {
-        return mDistance + " Km";
+    public double getDistance() {
+        return mDistance;
     }
 
-    public void setDistance(String mDistance) {
-        this.mDistance = mDistance;
+    public String getDistanceString() {
+        return String.valueOf(mDistance) + " Km";
     }
 
     public double getLatitude() {
@@ -61,15 +62,16 @@ public class Location {
         this.mLongitude = mLongitude;
     }
 
-    public double CalculateDistance(double latitude, double longitude){
+    public void CalculateDistance(double latitude, double longitude){
         double mDistanceTo = 0.0;
         float[] results = new float[1];
         android.location.Location.distanceBetween(latitude,longitude,mLatitude,mLongitude,results);
         if(results != null) {
-            if(results.length > 1){
+            if(results.length >= 1){
                 mDistanceTo = results[0]/1000;//To return km
             }
         }
-        return mDistanceTo;
+        double roundOff = (double) Math.round(mDistanceTo * 100) / 100;
+        mDistance = roundOff;
     }
 }

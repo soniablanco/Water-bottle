@@ -6,10 +6,8 @@ import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -23,23 +21,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.Api;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.PendingResult;
-import com.google.android.gms.common.api.Result;
-import com.google.android.gms.common.api.Scope;
-import com.google.android.gms.common.api.Status;
-import com.google.android.gms.common.api.zza;
-import com.google.android.gms.common.api.zzi;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 
-import java.io.FileDescriptor;
-import java.io.PrintWriter;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created by soni on 10/09/2015.
@@ -87,8 +74,8 @@ public class LocationListFragment extends Fragment {
         mLocationRecyclerView = (RecyclerView)v.findViewById(R.id.payment_recycler_view);
         mLocationRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mLocationRecyclerView.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_SPACE_DECORATION));
-        mLocationRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity(),LINE_DIVIDER));
-        UpdateUI();
+        mLocationRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), LINE_DIVIDER));
+        UpdateUI(0, 0);
         return v;
     }
 
@@ -126,7 +113,7 @@ public class LocationListFragment extends Fragment {
         {
             mLocation = location;
             mLocationNameTextView.setText(mLocation.getName());
-            mLocationDistanceTextView.setText(String.valueOf(mLocation.getDistance()));
+            mLocationDistanceTextView.setText(String.valueOf(mLocation.getDistanceString()));
             mLocationAddressTextView.setText(mLocation.getAddress());
         }
 
@@ -137,9 +124,14 @@ public class LocationListFragment extends Fragment {
         }
     }
 
-    public void UpdateUI(){
+    public void UpdateUI(double latitude, double longitude){
         LocationLab locationLab = LocationLab.get(getActivity());
-        mAdapter = new LocationAdapter(locationLab.getLocations());
+        if(latitude == 0 && longitude == 0) {
+            mAdapter = new LocationAdapter(locationLab.getLocations());
+        }
+        else{
+            mAdapter = new LocationAdapter(locationLab.getLocations(latitude, longitude));
+        }
         mLocationRecyclerView.setAdapter(mAdapter);
     }
 
@@ -154,6 +146,7 @@ public class LocationListFragment extends Fragment {
                     @Override
                     public void onLocationChanged(android.location.Location location) {
                         Log.i(TAG, "My location: " + location);
+                        UpdateUI(location.getLatitude(), location.getLongitude());
                     }
                 });
     }
