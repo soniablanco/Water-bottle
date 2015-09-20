@@ -42,6 +42,7 @@ public class LocationListFragment extends Fragment {
 
     private GoogleApiClient mClient;
     private static final String TAG = "LocationListFragment";
+    private android.location.Location mCurrentPosition;
 
     public static LocationListFragment newInstace(){
         return new LocationListFragment();
@@ -122,7 +123,7 @@ public class LocationListFragment extends Fragment {
         public void onClick(View v) {
             /*Toast.makeText(getActivity(),mLocation.getName() + " clicked", Toast.LENGTH_SHORT)
             .show();*/
-            Intent intent = new Intent(getActivity(),LocationActivity.class);
+            Intent intent = LocationActivity.newIntent(getActivity(), mLocation.getId(),mCurrentPosition );
             startActivity(intent);
         }
     }
@@ -149,6 +150,7 @@ public class LocationListFragment extends Fragment {
                     @Override
                     public void onLocationChanged(android.location.Location location) {
                         Log.i(TAG, "My location: " + location);
+                        mCurrentPosition = location;
                         UpdateUI(location.getLatitude(), location.getLongitude());
                     }
                 });

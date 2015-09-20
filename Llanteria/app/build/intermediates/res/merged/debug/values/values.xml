@@ -193,6 +193,9 @@
     <!-- From: file:/D:/SONI/Llanteria/App/Llanteria/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.0.0/res/values/values.xml -->
     <eat-comment/>
     <dimen name="item_touch_helper_max_drag_scroll_per_frame">20dp</dimen>
+    <!-- From: file:/D:/SONI/Llanteria/App/Llanteria/app/src/main/res/values/dimens.xml -->
+    <eat-comment/>
+    <dimen name="map_inset_margin">100dp</dimen>
     <!-- From: file:/D:/SONI/Llanteria/App/Llanteria/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/values/values.xml -->
     <eat-comment/>
     <dimen name="notification_large_icon_height">64dp</dimen>
