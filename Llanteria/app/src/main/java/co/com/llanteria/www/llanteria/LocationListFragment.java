@@ -1,6 +1,7 @@
 package co.com.llanteria.www.llanteria;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Rect;
@@ -119,8 +120,10 @@ public class LocationListFragment extends Fragment {
 
         @Override
         public void onClick(View v) {
-            Toast.makeText(getActivity(),mLocation.getName() + " clicked", Toast.LENGTH_SHORT)
-            .show();
+            /*Toast.makeText(getActivity(),mLocation.getName() + " clicked", Toast.LENGTH_SHORT)
+            .show();*/
+            Intent intent = new Intent(getActivity(),LocationActivity.class);
+            startActivity(intent);
         }
     }
 
