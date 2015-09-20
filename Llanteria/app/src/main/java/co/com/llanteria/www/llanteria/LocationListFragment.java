@@ -6,18 +6,40 @@ import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.Api;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.PendingResult;
+import com.google.android.gms.common.api.Result;
+import com.google.android.gms.common.api.Scope;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.common.api.zza;
+import com.google.android.gms.common.api.zzi;
+import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
+
+import java.io.FileDescriptor;
+import java.io.PrintWriter;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by soni on 10/09/2015.
@@ -25,15 +47,39 @@ import java.util.List;
 public class LocationListFragment extends Fragment {
 
     private RecyclerView mLocationRecyclerView;
-
     private static final int VERTICAL_SPACE_DECORATION = 48;
     private static final int[] LINE_DIVIDER = new int[]{android.R.attr.listDivider};
 
     private LocationAdapter mAdapter;
 
+    private GoogleApiClient mClient;
+    private static final String TAG = "LocationListFragment";
+
     public static LocationListFragment newInstace(){
         return new LocationListFragment();
     }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+        mClient = new GoogleApiClient.Builder(getActivity())
+                .addApi(LocationServices.API)
+                .addConnectionCallbacks(new GoogleApiClient.ConnectionCallbacks(){
+                    @Override
+                    public void onConnected(Bundle bundle) {
+                        getActivity().invalidateOptionsMenu();
+                    }
+
+                    @Override
+                    public void onConnectionSuspended(int i) {
+
+                    }
+                })
+                .build();
+    }
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -44,6 +90,20 @@ public class LocationListFragment extends Fragment {
         mLocationRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity(),LINE_DIVIDER));
         UpdateUI();
         return v;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        getActivity().invalidateOptionsMenu();
+        mClient.connect();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        mClient.disconnect();
     }
 
     private class LocationHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
@@ -81,6 +141,42 @@ public class LocationListFragment extends Fragment {
         LocationLab locationLab = LocationLab.get(getActivity());
         mAdapter = new LocationAdapter(locationLab.getLocations());
         mLocationRecyclerView.setAdapter(mAdapter);
+    }
+
+    public void getLocation(){
+        LocationRequest request = LocationRequest.create();
+        request.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        request.setNumUpdates(1);
+        request.setInterval(0);
+
+        LocationServices.FusedLocationApi
+                .requestLocationUpdates(mClient, request, new LocationListener() {
+                    @Override
+                    public void onLocationChanged(android.location.Location location) {
+                        Log.i(TAG, "My location: " + location);
+                    }
+                });
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.fragment_location_list, menu);
+
+        MenuItem searchItem = menu.findItem(R.id.action_locate);
+        searchItem.setEnabled(mClient.isConnected());
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        //return super.onOptionsItemSelected(item);
+        switch (item.getItemId()){
+            case R.id.action_locate:
+                getLocation();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     private class LocationAdapter extends RecyclerView.Adapter<LocationHolder>{
