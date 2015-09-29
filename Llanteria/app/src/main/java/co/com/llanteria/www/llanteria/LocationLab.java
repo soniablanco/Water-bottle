@@ -56,6 +56,46 @@ public class LocationLab {
         //loc.setDistance("10.7");//km
         mLocations.add(loc);
 
+        //Bogota
+        /*loc = new Location();
+        loc.setName("Mc Donnalds");
+        loc.setAddress("Cl. 125 #32-13 Bogotá,Colombia");
+        loc.setLatitude(4.705730);
+        loc.setLongitude(-74.053240);
+        //loc.setDistance("10.7");//km
+        mLocations.add(loc);
+
+        loc = new Location();
+        loc.setName("Santafe");
+        loc.setAddress("Calle 185 # 45-03, Bogotá,Colombia");
+        loc.setLatitude(4.762977);
+        loc.setLongitude(-74.045559);
+        //loc.setDistance("10.7");//km
+        mLocations.add(loc);
+
+        loc = new Location();
+        loc.setName("Unicentro");
+        loc.setAddress("Carrera 15 con calle 127-23, Bogotá,Colombia");
+        loc.setLatitude(4.701915);
+        loc.setLongitude(-74.042317);
+        //loc.setDistance("10.7");//km
+        mLocations.add(loc);
+
+        loc = new Location();
+        loc.setName("El Campin");
+        loc.setAddress("Carrera 30 y Calle 57, Bogotá,Colombia");
+        loc.setLatitude(4.647245);
+        loc.setLongitude(-74.077394);
+        //loc.setDistance("10.7");//km
+        mLocations.add(loc);
+
+        loc = new Location();
+        loc.setName("La Candelaria");
+        loc.setAddress("Calle 11 carrera 5, Bogotá,Colombia");
+        loc.setLatitude(4.597937);
+        loc.setLongitude(-74.074613);
+        //loc.setDistance("10.7");//km
+        mLocations.add(loc);*/
     }
 
     public List<Location> getLocations(){

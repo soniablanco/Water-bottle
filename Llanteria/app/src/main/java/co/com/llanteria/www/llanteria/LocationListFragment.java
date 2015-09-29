@@ -58,6 +58,7 @@ public class LocationListFragment extends Fragment {
                     @Override
                     public void onConnected(Bundle bundle) {
                         getActivity().invalidateOptionsMenu();
+                        getLocation();
                     }
 
                     @Override
@@ -77,14 +78,13 @@ public class LocationListFragment extends Fragment {
         mLocationRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mLocationRecyclerView.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_SPACE_DECORATION));
         mLocationRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), LINE_DIVIDER));
-        UpdateUI(0, 0);
+        UpdateUI(0,0);
         return v;
     }
 
     @Override
     public void onStart() {
         super.onStart();
-
         getActivity().invalidateOptionsMenu();
         mClient.connect();
     }
@@ -163,6 +163,7 @@ public class LocationListFragment extends Fragment {
 
         MenuItem searchItem = menu.findItem(R.id.action_locate);
         searchItem.setEnabled(mClient.isConnected());
+
     }
 
     @Override

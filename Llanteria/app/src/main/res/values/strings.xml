@@ -3,5 +3,6 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="search">Find a Site near you</string>
+    <string name="search">Find a site near you</string>
+    <string name="directions_dialog_title">Location:</string>
 </resources>
