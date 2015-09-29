@@ -74,7 +74,8 @@ public class LocationFragment extends SupportMapFragment {
                             return true;
                         } else {
                             FragmentManager manager = getFragmentManager();
-                            DirectionsDialogFragment dialog = DirectionsDialogFragment.newInstance(UUID.fromString(marker.getTitle()));
+                            DirectionsDialogFragment dialog = DirectionsDialogFragment
+                                    .newInstance(UUID.fromString(marker.getTitle()),mCurrentPosition);
                             dialog.show(manager, DIALOG_DIRECTIONS);
                             return true;
                         }
