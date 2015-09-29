@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\SONI\Llanteria\App\Llanteria\app\src\main\AndroidManifest.xml:2:1-35:12
+ADDED from D:\SONI\Llanteria\App\Llanteria\app\src\main\AndroidManifest.xml:2:1-36:12
 	xmlns:android
 		ADDED from D:\SONI\Llanteria\App\Llanteria\app\src\main\AndroidManifest.xml:2:11-69
 	package
@@ -34,7 +34,7 @@ ADDED from D:\SONI\Llanteria\App\Llanteria\app\src\main\AndroidManifest.xml:9:5-
 	android:name
 		ADDED from D:\SONI\Llanteria\App\Llanteria\app\src\main\AndroidManifest.xml:9:22-78
 application
-ADDED from D:\SONI\Llanteria\App\Llanteria\app\src\main\AndroidManifest.xml:12:5-33:19
+ADDED from D:\SONI\Llanteria\App\Llanteria\app\src\main\AndroidManifest.xml:12:5-34:19
 MERGED from [com.android.support:appcompat-v7:23.0.0] D:\SONI\Llanteria\App\Llanteria\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.0.0\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:23.0.0] D:\SONI\Llanteria\App\Llanteria\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.0\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:23.0.0] D:\SONI\Llanteria\App\Llanteria\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.0\AndroidManifest.xml:22:5-20
@@ -79,9 +79,11 @@ ADDED from D:\SONI\Llanteria\App\Llanteria\app\src\main\AndroidManifest.xml:26:1
 	android:name
 		ADDED from D:\SONI\Llanteria\App\Llanteria\app\src\main\AndroidManifest.xml:26:27-74
 activity#co.com.llanteria.www.llanteria.LocationActivity
-ADDED from D:\SONI\Llanteria\App\Llanteria\app\src\main\AndroidManifest.xml:29:9-32:20
+ADDED from D:\SONI\Llanteria\App\Llanteria\app\src\main\AndroidManifest.xml:29:9-33:20
 	android:label
 		ADDED from D:\SONI\Llanteria\App\Llanteria\app\src\main\AndroidManifest.xml:30:13-45
+	android:parentActivityName
+		ADDED from D:\SONI\Llanteria\App\Llanteria\app\src\main\AndroidManifest.xml:31:13-63
 	android:name
 		ADDED from D:\SONI\Llanteria\App\Llanteria\app\src\main\AndroidManifest.xml:29:19-51
 uses-sdk

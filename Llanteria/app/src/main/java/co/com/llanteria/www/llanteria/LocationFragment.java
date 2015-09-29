@@ -108,7 +108,7 @@ public class LocationFragment extends SupportMapFragment {
         }
         LatLng locationPoint = new LatLng(mLocation.getLatitude(), mLocation.getLongitude());
         MarkerOptions locationMarker =  new MarkerOptions()
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.tire_icon))
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.llanteria_marker))
                 .position(locationPoint).title(mLocation.getId().toString());
         LatLng myPositionPoint = new LatLng(mCurrentPosition.getLatitude(), mCurrentPosition.getLongitude());
         MarkerOptions myMarker = new MarkerOptions()

@@ -55,7 +55,7 @@ public class DirectionsDialogFragment extends DialogFragment {
 
         return new AlertDialog.Builder(getActivity())
                 .setView(v)
-                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                .setPositiveButton(R.string.directions_dialog_navigate_button, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         String uri = "http://maps.google.com/maps?saddr=" + Double.toString(mCurrentPosition.getLatitude()) + "," + Double.toString(mCurrentPosition.getLongitude())

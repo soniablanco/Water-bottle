@@ -1801,11 +1801,12 @@ containing a value of this type.
         public static final int ic_plusone_small_off_client=0x7f020059;
         public static final int ic_plusone_standard_off_client=0x7f02005a;
         public static final int ic_plusone_tall_off_client=0x7f02005b;
-        public static final int location_item_icon=0x7f02005c;
-        public static final int notification_template_icon_bg=0x7f020060;
-        public static final int powered_by_google_dark=0x7f02005d;
-        public static final int powered_by_google_light=0x7f02005e;
-        public static final int tire_icon=0x7f02005f;
+        public static final int llanteria_marker=0x7f02005c;
+        public static final int location_item_icon=0x7f02005d;
+        public static final int notification_template_icon_bg=0x7f020061;
+        public static final int powered_by_google_dark=0x7f02005e;
+        public static final int powered_by_google_light=0x7f02005f;
+        public static final int tire_icon=0x7f020060;
     }
     public static final class id {
         public static final int action0=0x7f0c005c;
@@ -2025,9 +2026,12 @@ containing a value of this type.
         public static final int common_signin_button_text=0x7f06002d;
         public static final int common_signin_button_text_long=0x7f06002e;
         public static final int commono_google_play_services_api_unavailable_text=0x7f06002f;
-        public static final int directions_dialog_title=0x7f060033;
-        public static final int hello_world=0x7f060034;
-        public static final int search=0x7f060035;
+        public static final int connection_error_msg=0x7f060033;
+        public static final int connection_error_title=0x7f060034;
+        public static final int directions_dialog_navigate_button=0x7f060035;
+        public static final int directions_dialog_title=0x7f060036;
+        public static final int hello_world=0x7f060037;
+        public static final int search=0x7f060038;
         public static final int status_bar_notification_info_overflow=0x7f060030;
     }
     public static final class style {

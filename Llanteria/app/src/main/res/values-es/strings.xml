@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Llanteria</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Configuración</string>
+    <string name="search">Encontrar una Llanteria cercana</string>
+    <string name="connection_error_title">Error de red:</string>
+    <string name="connection_error_msg">Conexión a internet no disponible</string>
+    <string name="directions_dialog_title">Ubicación:</string>
+    <string name="directions_dialog_navigate_button">NAVEGAR AQUI</string>
+</resources>

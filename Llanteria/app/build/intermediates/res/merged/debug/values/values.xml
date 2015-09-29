@@ -283,6 +283,9 @@
 available. Please contact the developer for assistance.</string>
     <!-- From: file:/D:/SONI/Llanteria/App/Llanteria/app/src/main/res/values/strings.xml -->
     <eat-comment/>
+    <string name="connection_error_msg">No internet connection available</string>
+    <string name="connection_error_title">Network error:</string>
+    <string name="directions_dialog_navigate_button">NAVIGATE HERE</string>
     <string name="directions_dialog_title">Location:</string>
     <string name="hello_world">Hello world!</string>
     <string name="search">Find a site near you</string>

@@ -44,8 +44,8 @@ public class LocationListActivity extends SingleFragmentActivity {
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
         if(netInfo == null){//  !netInfo.isConnectedOrConnecting()
             Dialog connectionDialog = new AlertDialog.Builder(this)
-                    .setTitle("Network error")
-                    .setMessage("No internet connection available")
+                    .setTitle(R.string.connection_error_title)
+                    .setMessage(R.string.connection_error_msg)
                     .setCancelable(true)
                     .setOnCancelListener(new DialogInterface.OnCancelListener() {
                         @Override
