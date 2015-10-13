@@ -2,13 +2,17 @@ package co.com.llanteria.www.llanteria;
 
 import android.location.*;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.*;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -20,6 +24,7 @@ import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -55,6 +60,7 @@ public class LocationFragment extends SupportMapFragment {
                     @Override
                     public void onConnected(Bundle bundle) {
                         getActivity().invalidateOptionsMenu();
+                        //getLocation();
                     }
 
                     @Override
@@ -63,6 +69,7 @@ public class LocationFragment extends SupportMapFragment {
                     }
                 })
                 .build();
+
         getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(GoogleMap googleMap) {
@@ -75,17 +82,42 @@ public class LocationFragment extends SupportMapFragment {
                         } else {
                             FragmentManager manager = getFragmentManager();
                             DirectionsDialogFragment dialog = DirectionsDialogFragment
-                                    .newInstance(UUID.fromString(marker.getTitle()),mCurrentPosition);
+                                    .newInstance(UUID.fromString(marker.getTitle()), mCurrentPosition);
                             dialog.show(manager, DIALOG_DIRECTIONS);
                             return true;
                         }
                     }
                 });
-                if (mCurrentPosition != null) {
-                    UpdateUI();
-                }
+                mMap.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
+                    @Override
+                    public void onMapLoaded() {
+                        if (mCurrentPosition != null) {
+                            UpdateUI();
+                        }
+                    }
+
+                });
+
             }
+
         });
+    }
+
+    public void getLocation(){
+        LocationRequest request = LocationRequest.create();
+        request.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        request.setNumUpdates(1);
+        request.setInterval(0);
+
+        LocationServices.FusedLocationApi
+                .requestLocationUpdates(mClient, request, new com.google.android.gms.location.LocationListener() {
+                    @Override
+                    public void onLocationChanged(android.location.Location location) {
+                        Log.i(TAG, "My location: " + location);
+                        mCurrentPosition = location;
+                        UpdateUI();
+                    }
+                });
     }
 
     @Override
@@ -121,13 +153,20 @@ public class LocationFragment extends SupportMapFragment {
                 .include(locationPoint)
                 .build();
         int margin = getResources().getDimensionPixelSize(R.dimen.map_inset_margin);
-        CameraUpdate update = CameraUpdateFactory.newLatLngBounds(bounds, margin);
+
+        CameraUpdate update = CameraUpdateFactory.newLatLngBounds(bounds,margin);//, margin
         mMap.animateCamera(update);
     }
 
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        /*if (mCurrentPosition != null) {
+            UpdateUI();
+        }*/
+    }
 
-
-    /*@Override
+/*@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_location, container, false);
         return v;

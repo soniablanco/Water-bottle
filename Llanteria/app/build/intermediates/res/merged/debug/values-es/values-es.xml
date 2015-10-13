@@ -60,9 +60,12 @@
     <eat-comment/>
     <string name="connection_error_msg">Conexión a internet no disponible</string>
     <string name="connection_error_title">Error de red:</string>
-    <string name="directions_dialog_navigate_button">NAVEGAR AQUI</string>
+    <string name="directions_dialog_navigate_button">CÓMO LLEGAR</string>
     <string name="directions_dialog_title">Ubicación:</string>
+    <string name="gps_offline_error">La ubicación se encuentra deshabilitada, desea habilitarla?</string>
     <string name="hello_world">Hello world!</string>
+    <string name="negative_answer">no</string>
+    <string name="positive_answer">si</string>
     <string name="search">Encontrar una Llanteria cercana</string>
     <!-- From: file:/D:/SONI/Llanteria/App/Llanteria/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/values-es/values-es.xml -->
     <eat-comment/>

@@ -287,7 +287,10 @@ available. Please contact the developer for assistance.</string>
     <string name="connection_error_title">Network error:</string>
     <string name="directions_dialog_navigate_button">NAVIGATE HERE</string>
     <string name="directions_dialog_title">Location:</string>
+    <string name="gps_offline_error">Your GPS seems to be disabled, do you want to enable it?</string>
     <string name="hello_world">Hello world!</string>
+    <string name="negative_answer">no</string>
+    <string name="positive_answer">yes</string>
     <string name="search">Find a site near you</string>
     <!-- From: file:/D:/SONI/Llanteria/App/Llanteria/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/values/values.xml -->
     <eat-comment/>

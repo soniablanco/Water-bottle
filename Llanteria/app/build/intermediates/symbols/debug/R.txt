@@ -708,8 +708,11 @@ int string connection_error_msg 0x7f060033
 int string connection_error_title 0x7f060034
 int string directions_dialog_navigate_button 0x7f060035
 int string directions_dialog_title 0x7f060036
-int string hello_world 0x7f060037
-int string search 0x7f060038
+int string gps_offline_error 0x7f060037
+int string hello_world 0x7f060038
+int string negative_answer 0x7f060039
+int string positive_answer 0x7f06003a
+int string search 0x7f06003b
 int string status_bar_notification_info_overflow 0x7f060030
 int style AlertDialog_AppCompat 0x7f08007a
 int style AlertDialog_AppCompat_Light 0x7f08007b

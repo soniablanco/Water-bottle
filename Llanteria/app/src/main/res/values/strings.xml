@@ -8,4 +8,7 @@
     <string name="connection_error_msg">No internet connection available</string>
     <string name="directions_dialog_title">Location:</string>
     <string name="directions_dialog_navigate_button">NAVIGATE HERE</string>
+    <string name="gps_offline_error">Your GPS seems to be disabled, do you want to enable it?</string>
+    <string name="positive_answer">yes</string>
+    <string name="negative_answer">no</string>
 </resources>

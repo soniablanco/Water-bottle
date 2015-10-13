@@ -2030,8 +2030,11 @@ containing a value of this type.
         public static final int connection_error_title=0x7f060034;
         public static final int directions_dialog_navigate_button=0x7f060035;
         public static final int directions_dialog_title=0x7f060036;
-        public static final int hello_world=0x7f060037;
-        public static final int search=0x7f060038;
+        public static final int gps_offline_error=0x7f060037;
+        public static final int hello_world=0x7f060038;
+        public static final int negative_answer=0x7f060039;
+        public static final int positive_answer=0x7f06003a;
+        public static final int search=0x7f06003b;
         public static final int status_bar_notification_info_overflow=0x7f060030;
     }
     public static final class style {

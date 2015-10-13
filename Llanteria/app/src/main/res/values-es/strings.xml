@@ -7,5 +7,8 @@
     <string name="connection_error_title">Error de red:</string>
     <string name="connection_error_msg">Conexión a internet no disponible</string>
     <string name="directions_dialog_title">Ubicación:</string>
-    <string name="directions_dialog_navigate_button">NAVEGAR AQUI</string>
+    <string name="directions_dialog_navigate_button">CÓMO LLEGAR</string>
+    <string name="gps_offline_error">La ubicación se encuentra deshabilitada, desea habilitarla?</string>
+    <string name="positive_answer">si</string>
+    <string name="negative_answer">no</string>
 </resources>
