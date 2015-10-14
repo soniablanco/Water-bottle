@@ -35,11 +35,13 @@ public class LocationFragment extends SupportMapFragment {
     private static final String TAG = "LocationFragment";
     private static final String DIALOG_DIRECTIONS = "DialogDirections";
 
-    private android.location.Location mCurrentPosition;
-    private Marker mMarker;
-    private GoogleMap mMap;
+    //private android.location.Location mCurrentPosition;
+
+    //private GoogleMap mMap;
     private GoogleApiClient mClient;
-    private Location mLocation;
+    private Marker mMarker;
+
+    //private Location mLocation;
 
     public static LocationFragment newInstace(){
         return new LocationFragment();
@@ -48,19 +50,18 @@ public class LocationFragment extends SupportMapFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        UUID locationId = (UUID) getActivity().getIntent()
-                .getSerializableExtra(LocationActivity.EXTRA_LOCATION_ID);
-        mLocation = LocationLab.get(getActivity()).getLocation(locationId);
-        mCurrentPosition = (android.location.Location)getActivity().getIntent()
-                .getParcelableExtra(LocationActivity.EXTRA_CURRENT_LOCATION);
 
+        final UUID locationId = (UUID) getActivity().getIntent()
+                .getSerializableExtra(LocationActivity.EXTRA_LOCATION_ID);
+        /*mLocation = LocationLab.get(getActivity()).getLocation(locationId);
+        mCurrentPosition = (android.location.Location)getActivity().getIntent()
+                .getParcelableExtra(LocationActivity.EXTRA_CURRENT_LOCATION);*/
         mClient = new GoogleApiClient.Builder(getActivity())
                 .addApi(LocationServices.API)
                 .addConnectionCallbacks(new GoogleApiClient.ConnectionCallbacks() {
                     @Override
                     public void onConnected(Bundle bundle) {
-                        getActivity().invalidateOptionsMenu();
-                        //getLocation();
+                        getLocation(locationId);
                     }
 
                     @Override
@@ -69,8 +70,8 @@ public class LocationFragment extends SupportMapFragment {
                     }
                 })
                 .build();
-
-        getMapAsync(new OnMapReadyCallback() {
+        mClient.connect();
+        /*getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(GoogleMap googleMap) {
                 mMap = googleMap;
@@ -100,22 +101,61 @@ public class LocationFragment extends SupportMapFragment {
 
             }
 
+        });*/
+    }
+
+    public void initialiseMap(final LocationObject locationInfo){
+        getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(final GoogleMap googleMap) {
+
+                googleMap.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
+                    @Override
+                    public void onMapLoaded() {
+                        UpdateUI(googleMap,locationInfo);
+                    }
+
+                });
+
+                googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+                    @Override
+                    public boolean onMarkerClick(Marker marker) {
+                        if (marker.equals(mMarker)) {
+                            return true;
+                        } else {
+                            FragmentManager manager = getFragmentManager();
+                            DirectionsDialogFragment dialog = DirectionsDialogFragment
+                                    .newInstance(UUID.fromString(marker.getTitle()), locationInfo.mCurrentPosition);
+                            dialog.show(manager, DIALOG_DIRECTIONS);
+                            return true;
+                        }
+                    }
+                });
+
+            }
+
         });
     }
 
-    public void getLocation(){
+    public  void getLocation(UUID locationId){
+
         LocationRequest request = LocationRequest.create();
         request.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
         request.setNumUpdates(1);
         request.setInterval(0);
+
+        final Location targetLocation = LocationLab.get(getActivity()).getLocation(locationId);
+
 
         LocationServices.FusedLocationApi
                 .requestLocationUpdates(mClient, request, new com.google.android.gms.location.LocationListener() {
                     @Override
                     public void onLocationChanged(android.location.Location location) {
                         Log.i(TAG, "My location: " + location);
-                        mCurrentPosition = location;
-                        UpdateUI();
+                        LocationObject locationInfo = new LocationObject();
+                        locationInfo.mTargetLocation = targetLocation;
+                        locationInfo.mCurrentPosition = location;
+                        initialiseMap(locationInfo);
                     }
                 });
     }
@@ -124,29 +164,30 @@ public class LocationFragment extends SupportMapFragment {
     public void onStart() {
         super.onStart();
 
-        getActivity().invalidateOptionsMenu();
-        mClient.connect();
+        /*getActivity().invalidateOptionsMenu();
+        mClient.connect();*/
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        mClient.disconnect();
+        /*mClient.disconnect();*/
     }
 
-    public void UpdateUI(){
-        if(mMap == null){
+    public void UpdateUI(GoogleMap mMap,LocationObject locationInfo){
+        /*if(mMap == null){
             return;
-        }
-        LatLng locationPoint = new LatLng(mLocation.getLatitude(), mLocation.getLongitude());
+        }*/
+        LatLng locationPoint = new LatLng(locationInfo.mTargetLocation.getLatitude(), locationInfo.mTargetLocation.getLongitude());
         MarkerOptions locationMarker =  new MarkerOptions()
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.llanteria_marker))
-                .position(locationPoint).title(mLocation.getId().toString());
-        LatLng myPositionPoint = new LatLng(mCurrentPosition.getLatitude(), mCurrentPosition.getLongitude());
+                .position(locationPoint).title(locationInfo.mTargetLocation.getId().toString());
+        LatLng myPositionPoint = new LatLng(locationInfo.mCurrentPosition.getLatitude(),locationInfo.mCurrentPosition.getLongitude() );
         MarkerOptions myMarker = new MarkerOptions()
                 .position(myPositionPoint);
         mMap.clear();
         mMarker = mMap.addMarker(myMarker);
+
         mMap.addMarker(locationMarker);
         LatLngBounds bounds = new LatLngBounds.Builder()
                 .include(myPositionPoint)
