@@ -53,6 +53,8 @@ public class LocationFragment extends SupportMapFragment {
 
         final UUID locationId = (UUID) getActivity().getIntent()
                 .getSerializableExtra(LocationActivity.EXTRA_LOCATION_ID);
+
+
         /*mLocation = LocationLab.get(getActivity()).getLocation(locationId);
         mCurrentPosition = (android.location.Location)getActivity().getIntent()
                 .getParcelableExtra(LocationActivity.EXTRA_CURRENT_LOCATION);*/
@@ -131,7 +133,6 @@ public class LocationFragment extends SupportMapFragment {
                         }
                     }
                 });
-
             }
 
         });
@@ -156,6 +157,7 @@ public class LocationFragment extends SupportMapFragment {
                         locationInfo.mTargetLocation = targetLocation;
                         locationInfo.mCurrentPosition = location;
                         initialiseMap(locationInfo);
+                        mClient.disconnect();
                     }
                 });
     }

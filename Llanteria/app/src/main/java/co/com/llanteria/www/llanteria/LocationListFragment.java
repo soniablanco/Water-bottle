@@ -173,9 +173,17 @@ public class LocationListFragment extends Fragment {
             case R.id.action_locate:
                 getLocation();
                 return true;
+            case R.id.action_locate_all:
+                showAllOnMap();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    public void showAllOnMap(){
+        Intent intent =  new Intent(getContext(),LocationsActivity.class);
+        startActivity(intent);
     }
 
     private class LocationAdapter extends RecyclerView.Adapter<LocationHolder>{

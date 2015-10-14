@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\SONI\Llanteria\App\Llanteria\app\src\main\AndroidManifest.xml:2:1-36:12
+ADDED from D:\SONI\Llanteria\App\Llanteria\app\src\main\AndroidManifest.xml:2:1-41:12
 	xmlns:android
 		ADDED from D:\SONI\Llanteria\App\Llanteria\app\src\main\AndroidManifest.xml:2:11-69
 	package
@@ -34,7 +34,7 @@ ADDED from D:\SONI\Llanteria\App\Llanteria\app\src\main\AndroidManifest.xml:9:5-
 	android:name
 		ADDED from D:\SONI\Llanteria\App\Llanteria\app\src\main\AndroidManifest.xml:9:22-78
 application
-ADDED from D:\SONI\Llanteria\App\Llanteria\app\src\main\AndroidManifest.xml:12:5-34:19
+ADDED from D:\SONI\Llanteria\App\Llanteria\app\src\main\AndroidManifest.xml:12:5-39:19
 MERGED from [com.android.support:appcompat-v7:23.0.0] D:\SONI\Llanteria\App\Llanteria\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.0.0\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:23.0.0] D:\SONI\Llanteria\App\Llanteria\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.0\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:23.0.0] D:\SONI\Llanteria\App\Llanteria\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.0\AndroidManifest.xml:22:5-20
@@ -86,6 +86,14 @@ ADDED from D:\SONI\Llanteria\App\Llanteria\app\src\main\AndroidManifest.xml:29:9
 		ADDED from D:\SONI\Llanteria\App\Llanteria\app\src\main\AndroidManifest.xml:31:13-63
 	android:name
 		ADDED from D:\SONI\Llanteria\App\Llanteria\app\src\main\AndroidManifest.xml:29:19-51
+activity#co.com.llanteria.www.llanteria.LocationsActivity
+ADDED from D:\SONI\Llanteria\App\Llanteria\app\src\main\AndroidManifest.xml:34:9-38:20
+	android:label
+		ADDED from D:\SONI\Llanteria\App\Llanteria\app\src\main\AndroidManifest.xml:35:13-45
+	android:parentActivityName
+		ADDED from D:\SONI\Llanteria\App\Llanteria\app\src\main\AndroidManifest.xml:36:13-63
+	android:name
+		ADDED from D:\SONI\Llanteria\App\Llanteria\app\src\main\AndroidManifest.xml:34:19-52
 uses-sdk
 INJECTED from D:\SONI\Llanteria\App\Llanteria\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:appcompat-v7:23.0.0] D:\SONI\Llanteria\App\Llanteria\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.0.0\AndroidManifest.xml:20:5-43

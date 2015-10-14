@@ -53,18 +53,19 @@ public class DirectionsDialogFragment extends DialogFragment {
         mLocationName.setText(mLocation.getName());
         mLocationAddress.setText(mLocation.getAddress());
 
-        return new AlertDialog.Builder(getActivity())
-                .setView(v)
-                .setPositiveButton(R.string.directions_dialog_navigate_button, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        String uri = "http://maps.google.com/maps?saddr=" + Double.toString(mCurrentPosition.getLatitude()) + "," + Double.toString(mCurrentPosition.getLongitude())
-                                + "&daddr=" + Double.toString(mLocation.getLatitude()) + "," + Double.toString(mLocation.getLongitude())+"&dirflg=d";
-                        Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(uri));
-                        intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
-                        startActivity(intent);
-                    }
-                })
-                .create();
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity()).setView(v);
+        if(mCurrentPosition != null){
+            builder.setPositiveButton(R.string.directions_dialog_navigate_button, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    String uri = "http://maps.google.com/maps?saddr=" + Double.toString(mCurrentPosition.getLatitude()) + "," + Double.toString(mCurrentPosition.getLongitude())
+                            + "&daddr=" + Double.toString(mLocation.getLatitude()) + "," + Double.toString(mLocation.getLongitude())+"&dirflg=d";
+                    Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(uri));
+                    intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
+                    startActivity(intent);
+                }
+            });
+        }
+        return builder.create();
     }
 }
