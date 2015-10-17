@@ -175,6 +175,12 @@ public class LocationListFragment extends Fragment {
                 return true;
             case R.id.action_locate_all:
                 showAllOnMap();
+                /*MyLocationManager.calculateCurrentPosition(getActivity(), new PositionReadyListener() {
+                    @Override
+                    public void onPositionReady(android.location.Location myLocation) {
+                        Log.i("My Function",myLocation.toString());
+                    }
+                });*/
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
