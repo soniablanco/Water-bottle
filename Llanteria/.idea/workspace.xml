@@ -60,27 +60,34 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LocationListFragment.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LocationListFragment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/co/com/llanteria/www/llanteria/LocationListFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.053703703">
-              <caret line="176" column="16" selection-start-line="176" selection-start-column="16" selection-end-line="176" selection-end-column="16" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="137" column="50" selection-start-line="137" selection-start-column="50" selection-end-line="137" selection-end-column="50" />
               <folding>
-                <element signature="e#7266#7267#0" expanded="true" />
-                <element signature="e#7312#7313#0" expanded="true" />
-                <element signature="e#7995#7996#0" expanded="true" />
-                <element signature="e#8043#8044#0" expanded="true" />
+                <element signature="e#1805#2147#0" expanded="true" />
+                <element signature="e#2146#2147#0" expanded="true" />
+                <element signature="e#6367#6368#0" expanded="true" />
+                <element signature="e#6413#6414#0" expanded="true" />
+                <element signature="e#7096#7097#0" expanded="true" />
+                <element signature="e#7144#7145#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LocationFragment.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="LocationFragment.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/co/com/llanteria/www/llanteria/LocationFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="162" column="5" selection-start-line="140" selection-start-column="4" selection-end-line="162" selection-end-column="5" />
-              <folding />
+            <state vertical-scroll-proportion="-0.031481482">
+              <caret line="41" column="5" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
+              <folding>
+                <element signature="e#1969#2515#0" expanded="true" />
+                <element signature="e#2514#2515#0" expanded="true" />
+                <element signature="e#3884#5063#0" expanded="true" />
+                <element signature="e#5062#5063#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -1640,11 +1647,11 @@
         <option value="$PROJECT_DIR$/app/src/main/java/co/com/llanteria/www/llanteria/LocationsObject.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/com/llanteria/www/llanteria/DirectionsDialogFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/com/llanteria/www/llanteria/LocationsFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/co/com/llanteria/www/llanteria/LocationFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/com/llanteria/www/llanteria/LocationLab.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/com/llanteria/www/llanteria/PositionReadyListener.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/com/llanteria/www/llanteria/MyLocationManager.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/com/llanteria/www/llanteria/LocationListFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/com/llanteria/www/llanteria/LocationFragment.java" />
       </list>
     </option>
   </component>
@@ -2080,10 +2087,12 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#7266#7267#0" expanded="true" />
-            <element signature="e#7312#7313#0" expanded="true" />
-            <element signature="e#7995#7996#0" expanded="true" />
-            <element signature="e#8043#8044#0" expanded="true" />
+            <element signature="e#1805#2147#0" expanded="true" />
+            <element signature="e#2146#2147#0" expanded="true" />
+            <element signature="e#6367#6368#0" expanded="true" />
+            <element signature="e#6413#6414#0" expanded="true" />
+            <element signature="e#7096#7097#0" expanded="true" />
+            <element signature="e#7144#7145#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2128,10 +2137,12 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#7266#7267#0" expanded="true" />
-            <element signature="e#7312#7313#0" expanded="true" />
-            <element signature="e#7995#7996#0" expanded="true" />
-            <element signature="e#8043#8044#0" expanded="true" />
+            <element signature="e#1805#2147#0" expanded="true" />
+            <element signature="e#2146#2147#0" expanded="true" />
+            <element signature="e#6367#6368#0" expanded="true" />
+            <element signature="e#6413#6414#0" expanded="true" />
+            <element signature="e#7096#7097#0" expanded="true" />
+            <element signature="e#7144#7145#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2431,14 +2442,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/com/llanteria/www/llanteria/LocationFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="162" column="5" selection-start-line="140" selection-start-column="4" selection-end-line="162" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/co/com/llanteria/www/llanteria/DirectionsDialogFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2451,13 +2454,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/co/com/llanteria/www/llanteria/LocationListFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.053703703">
-          <caret line="176" column="16" selection-start-line="176" selection-start-column="16" selection-end-line="176" selection-end-column="16" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="137" column="50" selection-start-line="137" selection-start-column="50" selection-end-line="137" selection-end-column="50" />
           <folding>
-            <element signature="e#7266#7267#0" expanded="true" />
-            <element signature="e#7312#7313#0" expanded="true" />
-            <element signature="e#7995#7996#0" expanded="true" />
-            <element signature="e#8043#8044#0" expanded="true" />
+            <element signature="e#1805#2147#0" expanded="true" />
+            <element signature="e#2146#2147#0" expanded="true" />
+            <element signature="e#6367#6368#0" expanded="true" />
+            <element signature="e#6413#6414#0" expanded="true" />
+            <element signature="e#7096#7097#0" expanded="true" />
+            <element signature="e#7144#7145#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/com/llanteria/www/llanteria/LocationFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.031481482">
+          <caret line="41" column="5" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
+          <folding>
+            <element signature="e#1969#2515#0" expanded="true" />
+            <element signature="e#2514#2515#0" expanded="true" />
+            <element signature="e#3884#5063#0" expanded="true" />
+            <element signature="e#5062#5063#0" expanded="true" />
           </folding>
         </state>
       </provider>

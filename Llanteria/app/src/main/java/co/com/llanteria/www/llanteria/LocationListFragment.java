@@ -40,8 +40,7 @@ public class LocationListFragment extends Fragment {
 
     private LocationAdapter mAdapter;
 
-    private GoogleApiClient mClient;
-    private static final String TAG = "LocationListFragment";
+     private static final String TAG = "LocationListFragment";
     private android.location.Location mCurrentPosition;
 
     public static LocationListFragment newInstace(){
@@ -52,21 +51,14 @@ public class LocationListFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-        mClient = new GoogleApiClient.Builder(getActivity())
-                .addApi(LocationServices.API)
-                .addConnectionCallbacks(new GoogleApiClient.ConnectionCallbacks(){
-                    @Override
-                    public void onConnected(Bundle bundle) {
-                        getActivity().invalidateOptionsMenu();
-                        getLocation();
-                    }
-
-                    @Override
-                    public void onConnectionSuspended(int i) {
-
-                    }
-                })
-                .build();
+        MyLocationManager.calculateCurrentPosition(getActivity(), new PositionReadyListener() {
+            @Override
+            public void onPositionReady(android.location.Location myLocation) {
+                Log.i("My Function", myLocation.toString());
+                mCurrentPosition = myLocation;
+                UpdateUI(myLocation.getLatitude(), myLocation.getLongitude());
+            }
+        });
     }
 
 
@@ -86,13 +78,13 @@ public class LocationListFragment extends Fragment {
     public void onStart() {
         super.onStart();
         getActivity().invalidateOptionsMenu();
-        mClient.connect();
+        //mClient.connect();
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        mClient.disconnect();
+        //mClient.disconnect();
     }
 
     private class LocationHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
@@ -139,22 +131,7 @@ public class LocationListFragment extends Fragment {
         mLocationRecyclerView.setAdapter(mAdapter);
     }
 
-    public void getLocation(){
-        LocationRequest request = LocationRequest.create();
-        request.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-        request.setNumUpdates(1);
-        request.setInterval(0);
 
-        LocationServices.FusedLocationApi
-                .requestLocationUpdates(mClient, request, new LocationListener() {
-                    @Override
-                    public void onLocationChanged(android.location.Location location) {
-                        Log.i(TAG, "My location: " + location);
-                        mCurrentPosition = location;
-                        UpdateUI(location.getLatitude(), location.getLongitude());
-                    }
-                });
-    }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
@@ -162,7 +139,7 @@ public class LocationListFragment extends Fragment {
         inflater.inflate(R.menu.fragment_location_list, menu);
 
         MenuItem searchItem = menu.findItem(R.id.action_locate);
-        searchItem.setEnabled(mClient.isConnected());
+        //searchItem.setEnabled(mClient.isConnected());
 
     }
 
@@ -170,9 +147,9 @@ public class LocationListFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         //return super.onOptionsItemSelected(item);
         switch (item.getItemId()){
-            case R.id.action_locate:
+            /*case R.id.action_locate:
                 getLocation();
-                return true;
+                return true;*/
             case R.id.action_locate_all:
                 showAllOnMap();
                 /*MyLocationManager.calculateCurrentPosition(getActivity(), new PositionReadyListener() {

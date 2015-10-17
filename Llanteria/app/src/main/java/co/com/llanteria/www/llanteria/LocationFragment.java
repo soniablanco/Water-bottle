@@ -35,13 +35,7 @@ public class LocationFragment extends SupportMapFragment {
     private static final String TAG = "LocationFragment";
     private static final String DIALOG_DIRECTIONS = "DialogDirections";
 
-    //private android.location.Location mCurrentPosition;
-
-    //private GoogleMap mMap;
-    private GoogleApiClient mClient;
     private Marker mMarker;
-
-    //private Location mLocation;
 
     public static LocationFragment newInstace(){
         return new LocationFragment();
@@ -58,21 +52,17 @@ public class LocationFragment extends SupportMapFragment {
         /*mLocation = LocationLab.get(getActivity()).getLocation(locationId);
         mCurrentPosition = (android.location.Location)getActivity().getIntent()
                 .getParcelableExtra(LocationActivity.EXTRA_CURRENT_LOCATION);*/
-        mClient = new GoogleApiClient.Builder(getActivity())
-                .addApi(LocationServices.API)
-                .addConnectionCallbacks(new GoogleApiClient.ConnectionCallbacks() {
-                    @Override
-                    public void onConnected(Bundle bundle) {
-                        getLocation(locationId);
-                    }
-
-                    @Override
-                    public void onConnectionSuspended(int i) {
-
-                    }
-                })
-                .build();
-        mClient.connect();
+        MyLocationManager.calculateCurrentPosition(getActivity(), new PositionReadyListener() {
+            @Override
+            public void onPositionReady(android.location.Location myLocation) {
+                Log.i(TAG, myLocation.toString());
+                LocationObject locationInfo = new LocationObject();
+                final Location targetLocation = LocationLab.get(getActivity()).getLocation(locationId);
+                locationInfo.mTargetLocation = targetLocation;
+                locationInfo.mCurrentPosition = myLocation;
+                initialiseMap(locationInfo);
+            }
+        });
         /*getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(GoogleMap googleMap) {
@@ -114,7 +104,7 @@ public class LocationFragment extends SupportMapFragment {
                 googleMap.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
                     @Override
                     public void onMapLoaded() {
-                        UpdateUI(googleMap,locationInfo);
+                        UpdateUI(googleMap, locationInfo);
                     }
 
                 });
@@ -138,29 +128,6 @@ public class LocationFragment extends SupportMapFragment {
         });
     }
 
-    public  void getLocation(UUID locationId){
-
-        LocationRequest request = LocationRequest.create();
-        request.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-        request.setNumUpdates(1);
-        request.setInterval(0);
-
-        final Location targetLocation = LocationLab.get(getActivity()).getLocation(locationId);
-
-
-        LocationServices.FusedLocationApi
-                .requestLocationUpdates(mClient, request, new com.google.android.gms.location.LocationListener() {
-                    @Override
-                    public void onLocationChanged(android.location.Location location) {
-                        Log.i(TAG, "My location: " + location);
-                        LocationObject locationInfo = new LocationObject();
-                        locationInfo.mTargetLocation = targetLocation;
-                        locationInfo.mCurrentPosition = location;
-                        initialiseMap(locationInfo);
-                        mClient.disconnect();
-                    }
-                });
-    }
 
     @Override
     public void onStart() {
